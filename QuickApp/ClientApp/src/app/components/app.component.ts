@@ -18,6 +18,7 @@ import { AuthService } from '../services/auth.service';
 import { ConfigurationService } from '../services/configuration.service';
 import { Permission } from '../models/permission.model';
 import { LoginComponent } from '../components/login/login.component';
+import { NGXLogger } from 'ngx-logger';
 
 const alertify: any = require('../assets/scripts/alertify.js');
 
@@ -69,7 +70,12 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private translationService: AppTranslationService,
     public configurations: ConfigurationService,
-    public router: Router) {
+    public router: Router,
+    private logger: NGXLogger
+  ) {
+
+    this.logger.error('Your log message goes here');
+    this.logger.warn('Multiple', 'Argument', 'support');
 
     storageManager.initialiseStorageSyncListener();
 

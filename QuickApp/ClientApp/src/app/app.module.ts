@@ -63,6 +63,9 @@ import { UsersManagementComponent } from './components/controls/users-management
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
 
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+// HttpClientModule is only needed if you want to log on server or if you want to inspect sourcemaps
+
 
 @NgModule({
   imports: [
@@ -86,7 +89,12 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    LoggerModule.forRoot({
+      serverLoggingUrl: '/api/logs',
+      level: NgxLoggerLevel.DEBUG,
+      serverLogLevel: NgxLoggerLevel.ERROR
+    }),
   ],
   declarations: [
     AppComponent,
